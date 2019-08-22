@@ -25,7 +25,8 @@ class UserControllerTest extends WebTestCase
         $client = static::createClient();
         $client->request('POST', '/api/users', [], [], [
             'HTTP_ACCEPT' => 'application/json',
-            'CONTENT_TYPE' => 'application/json'
+            'CONTENT_TYPE' => 'application/json',
+            'HTTP_X-AUTH-TOKEN' => 'test'
         ],
         '{
             "id": 49,
