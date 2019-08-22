@@ -5,9 +5,12 @@
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "doctrine/annotations": "^1.7",
         "friendsofsymfony/rest-bundle": "^2.5",
+        "heroku/heroku-buildpack-php": "^159.0",
         "nelmio/api-doc-bundle": "^3.4",
+        "php-heroku-client/php-heroku-client": "^1.3",
         "sensio/framework-extra-bundle": "^5.4",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
@@ -23,8 +26,7 @@
         "symfony/translation": "4.3.*",
         "symfony/twig-bundle": "4.3.*",
         "symfony/validator": "4.3.*",
-        "symfony/yaml": "4.3.*",
-      "ext-json": "*"
+        "symfony/yaml": "4.3.*"
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.5",
@@ -37,7 +39,8 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "bin-dir": "ls"
     },
     "autoload": {
         "psr-4": {
