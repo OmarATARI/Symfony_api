@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -10,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     /**
+     * @Groups("article")
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -40,6 +42,17 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageUrl;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $expirateAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function getId(): ?int
     {
@@ -102,6 +115,30 @@ class Article
     public function setImageUrl(?string $imageUrl): self
     {
         $this->imageUrl = $imageUrl;
+
+        return $this;
+    }
+
+    public function getExpirateAt(): ?\DateTimeInterface
+    {
+        return $this->expirateAt;
+    }
+
+    public function setExpirateAt(\DateTimeInterface $expirateAt): self
+    {
+        $this->expirateAt = $expirateAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

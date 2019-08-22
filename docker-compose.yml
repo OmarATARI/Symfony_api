@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.3"
 
 services:
   web:
@@ -22,7 +22,8 @@ services:
       - ./docker/mysql:/var/lib/mysql
     environment:
       MYSQL_DATABASE: symfonyweb
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: apirest
+      MYSQL_PASSWORD: apirest
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -31,5 +32,6 @@ services:
     ports:
       - 8080:80
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: apirest
+      MYSQL_PASSWORD: apirest
       PMA_HOST: database
